@@ -12,10 +12,11 @@ import Foundation
 class SeasonsTableViewModel {
 
     var seasonsServices : SeasonsServices!
-    var seasons: [SeasonDetailViewModel] = []
+    private var seasons: [SeasonDetailViewModel] = []
     
     init(seasonsServices: SeasonsServices) {
         self.seasonsServices = seasonsServices
+        load()
     }
     
     func load() {
@@ -24,5 +25,9 @@ class SeasonsTableViewModel {
     
     func seasonForIndexPath(indexPath: NSIndexPath) -> SeasonDetailViewModel {
         return seasons[indexPath.row]
+    }
+    
+    func numberOfSeasons() -> Int {
+        return seasons.count
     }
 }

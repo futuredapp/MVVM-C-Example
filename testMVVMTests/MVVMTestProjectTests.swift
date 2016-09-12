@@ -11,8 +11,8 @@ import XCTest
 class Test1SeasonServices: SeasonsServices {
     
     func getSeasons() -> [Season] {
-        
-        return [Season(name: "blah", episodes: [])]
+        let episodes = [Episode(name: "episode1"), Episode(name: "episode2"), Episode(name: "episode3")]
+        return [Season(name: "blah", episodes: episodes)]
     }
 }
 
@@ -30,26 +30,57 @@ class MVVMTestProjectTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
     
     func testLoadData() {
-        
-        
+    
         let vm = SeasonsTableViewModel(seasonsServices: services)
-        vm.load()
+    
+        XCTAssert(vm.numberOfSeasons() == 1, "season 1 is missing")
         
-        XCTAssert(vm.seasons.count == 1 && vm.seasons[0].title == "blah", "doesnt have 1 season")
+        XCTAssert(vm.seasonForIndexPath(NSIndexPath(forRow: 0, inSection: 0)).title == "blah", "season 1 has wrong name")
+        XCTAssert(vm.seasonForIndexPath(NSIndexPath(forRow: 0, inSection: 0)).numberOfEpisodes() == services.getSeasons()[0].episodes.count, "season has wrong number of episodes")
+    }
+    
+
+    func getEpisode() -> EpisodeDetailViewModel {
+        let vm  = SeasonsTableViewModel(seasonsServices: services)
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        
+        return vm.seasonForIndexPath(indexPath).getEpisode(indexPath)
+    }
+    
+    func testGetEpisode() {
+        
+        let episode = getEpisode()
+        
+        XCTAssert(episode.title == "episode1" , "s01e01 is missing")
+    }
+    
+    func testPlayEpisode() {
+        let episode = getEpisode()
+        episode.play()
+        XCTAssert(episode.isPlaying, "should be playing")
+    }
+    
+    func testEpisodeWasPlayed() {
+        let episode = getEpisode()
+        XCTAssert(!episode.played, "should not be played")
+        
+        episode.play()
+        XCTAssert(episode.played, "should be played")
         
     }
+ 
+    func testPlayAndStopEpisode() {
+        let episodeVM = getEpisode()
+    
+        episodeVM.play()
+        XCTAssert(episodeVM.isPlaying , "episode should be playing")
+        
+        episodeVM.stop()
+        XCTAssert(!episodeVM.isPlaying , "episode should be set as played after play and stop")
+        
+    }
+    
     
 }

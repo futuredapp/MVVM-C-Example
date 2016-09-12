@@ -8,20 +8,47 @@
 
 import Foundation
 
+
+
 class EpisodeDetailViewModel {
+
     
     private var model: Episode
 
     var title: String?
+    var isPlaying : Bool = false
+    
+    var played: Bool {
+        return model.played
+    }
+    
     
     init(model: Episode) {
         self.model = model
         configure()
     }
     
+    
+    func play() {
+        if !isPlaying {
+            model.played = true
+            isPlaying = true
+        }
+    }
+    
+    func stop() {
+        isPlaying = false
+    }
+    
+    
+    
     func configure() {
         title = model.name 
     }
+    
+    
+    
+    
     
     
 }

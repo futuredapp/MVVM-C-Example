@@ -24,7 +24,7 @@ class SeasonDetailViewController: UIViewController {
 extension SeasonDetailViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.getEpisodesCount()
+        return viewModel.numberOfEpisodes()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -34,6 +34,18 @@ extension SeasonDetailViewController: UITableViewDataSource {
     }
 }
 
+
+extension SeasonDetailViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        viewModel.playEpisode(indexPath)
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        viewModel.stopPlayingEpisode(indexPath)
+    }
+}
 
 extension UITableViewCell {
 

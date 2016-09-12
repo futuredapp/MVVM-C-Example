@@ -18,6 +18,8 @@ struct Season {
 struct Episode {
     
     var name: String
+    var played: Bool = false
+    
     init(name: String) {
         self.name = name
     }

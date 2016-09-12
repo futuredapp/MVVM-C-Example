@@ -46,7 +46,7 @@ extension SeasonsViewController : UITableViewDelegate {
 extension SeasonsViewController : UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return viewModel.seasons.count
+       return viewModel.numberOfSeasons()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
