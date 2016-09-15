@@ -26,31 +26,35 @@ class SeasonsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         
         if segue.identifier == "showEpisodes" {
-            let vc = segue.destinationViewController as! SeasonDetailViewController
-            vc.viewModel = sender as! SeasonDetailViewModel
+            guard let vc = segue.destination as? SeasonDetailViewController, let viewModel = sender as? SeasonDetailViewModel  else {
+                assertionFailure("segue \(segue.identifier) destination vc is not SeasonDetailViewController")
+                return
+            }
+
+            vc.viewModel = viewModel
         }
     }
     
 }
 
 extension SeasonsViewController : UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("showEpisodes", sender: viewModel.seasonForIndexPath(indexPath))
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showEpisodes", sender: viewModel.seasonForIndexPath(indexPath))
     }
 }
 
 extension SeasonsViewController : UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return viewModel.numberOfSeasons()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         
         cell.configure(viewModel.seasonForIndexPath(indexPath))
         return cell
@@ -61,7 +65,7 @@ extension SeasonsViewController : UITableViewDataSource {
 
 extension UITableViewCell {
 
-    func configure(model: SeasonDetailViewModel) {
+    func configure(_ model: SeasonDetailViewModel) {
         textLabel?.text = model.title
     }
 }

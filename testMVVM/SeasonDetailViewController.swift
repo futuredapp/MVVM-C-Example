@@ -23,12 +23,12 @@ class SeasonDetailViewController: UIViewController {
 
 extension SeasonDetailViewController: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfEpisodes()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.configure(viewModel.getEpisode(indexPath))
         return cell
     }
@@ -37,19 +37,19 @@ extension SeasonDetailViewController: UITableViewDataSource {
 
 extension SeasonDetailViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         viewModel.playEpisode(indexPath)
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         viewModel.stopPlayingEpisode(indexPath)
     }
 }
 
 extension UITableViewCell {
 
-    func configure(viewModel: EpisodeDetailViewModel) {
+    func configure(_ viewModel: EpisodeDetailViewModel) {
         textLabel?.text = viewModel.title
     }
 }

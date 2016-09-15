@@ -13,7 +13,7 @@ import Foundation
 class EpisodeDetailViewModel {
 
     
-    private var model: Episode
+    fileprivate var model: Episode
 
     var title: String?
     var isPlaying : Bool = false

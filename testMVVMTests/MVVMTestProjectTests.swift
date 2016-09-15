@@ -37,14 +37,14 @@ class MVVMTestProjectTests: XCTestCase {
     
         XCTAssert(vm.numberOfSeasons() == 1, "season 1 is missing")
         
-        XCTAssert(vm.seasonForIndexPath(NSIndexPath(forRow: 0, inSection: 0)).title == "blah", "season 1 has wrong name")
-        XCTAssert(vm.seasonForIndexPath(NSIndexPath(forRow: 0, inSection: 0)).numberOfEpisodes() == services.getSeasons()[0].episodes.count, "season has wrong number of episodes")
+        XCTAssert(vm.seasonForIndexPath(IndexPath(row: 0, section: 0)).title == "blah", "season 1 has wrong name")
+        XCTAssert(vm.seasonForIndexPath(IndexPath(row: 0, section: 0)).numberOfEpisodes() == services.getSeasons()[0].episodes.count, "season has wrong number of episodes")
     }
     
 
     func getEpisode() -> EpisodeDetailViewModel {
         let vm  = SeasonsTableViewModel(seasonsServices: services)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        let indexPath = IndexPath(row: 0, section: 0)
         
         return vm.seasonForIndexPath(indexPath).getEpisode(indexPath)
     }

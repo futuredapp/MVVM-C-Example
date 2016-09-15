@@ -10,10 +10,10 @@ import Foundation
 
 class SeasonDetailViewModel {
     
-    private var model : Season
+    fileprivate var model : Season
     
     var title : String?
-    private var episodes : [EpisodeDetailViewModel]!
+    fileprivate var episodes : [EpisodeDetailViewModel]!
     
     init(model: Season) {
         self.model = model
@@ -30,18 +30,18 @@ class SeasonDetailViewModel {
         return episodes.count
     }
     
-    func getEpisode(indexPath: NSIndexPath) -> EpisodeDetailViewModel {
-        return episodes[indexPath.row]
+    func getEpisode(_ indexPath: IndexPath) -> EpisodeDetailViewModel {
+        return episodes[(indexPath as NSIndexPath).row]
     }
     
-    func playEpisode(indexPath: NSIndexPath) {
-        episodes[indexPath.row].play()
-        print("playing \(episodes[indexPath.row].title)")
+    func playEpisode(_ indexPath: IndexPath) {
+        episodes[(indexPath as NSIndexPath).row].play()
+        print("playing \(episodes[(indexPath as NSIndexPath).row].title)")
     }
     
-    func stopPlayingEpisode(indexPath: NSIndexPath) {
-        episodes[indexPath.row].stop()
-        print("stop playing \(episodes[indexPath.row].title!) played \(episodes[indexPath.row].played)")
+    func stopPlayingEpisode(_ indexPath: IndexPath) {
+        episodes[(indexPath as NSIndexPath).row].stop()
+        print("stop playing \(episodes[(indexPath as NSIndexPath).row].title) played \(episodes[(indexPath as NSIndexPath).row].played)")
         
     }
     
