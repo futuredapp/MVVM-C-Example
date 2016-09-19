@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Bond
 
 class SeasonsViewController: UIViewController {
 
@@ -16,8 +17,9 @@ class SeasonsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = SeasonsTableViewModel(seasonsServices: TestSeasonsServices())
-        viewModel.load()
-        tableView.reloadData()
+        _ = viewModel.load().then { (_) -> Void in
+            self.tableView.reloadData()
+        }
 
     }
 
@@ -45,6 +47,7 @@ extension SeasonsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showEpisodes", sender: viewModel.seasonForIndexPath(indexPath))
     }
+
 }
 
 extension SeasonsViewController : UITableViewDataSource {
@@ -54,18 +57,13 @@ extension SeasonsViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        let cell = ObservingTableViewCell(style: .default, reuseIdentifier: nil)
         
         cell.configure(viewModel.seasonForIndexPath(indexPath))
         return cell
     }
-    
+
 }
 
 
-extension UITableViewCell {
 
-    func configure(_ model: SeasonDetailViewModel) {
-        textLabel?.text = model.title
-    }
-}

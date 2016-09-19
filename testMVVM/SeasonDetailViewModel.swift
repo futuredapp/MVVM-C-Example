@@ -7,42 +7,56 @@
 //
 
 import Foundation
+import Bond
+import PromiseKit
+import ReactiveKit
 
 class SeasonDetailViewModel {
     
     fileprivate var model : Season
+    fileprivate var service: SeasonsServices
+    let title : Observable<String> = Observable("")
+
+    fileprivate var episodes : Observable<[EpisodeDetailViewModel]> = Observable([])
     
-    var title : String?
-    fileprivate var episodes : [EpisodeDetailViewModel]!
-    
-    init(model: Season) {
+    init(model: Season, seasonServices: SeasonsServices) {
         self.model = model
-        
+        self.service = seasonServices
         configure()
     }
     
     func configure() {
-        title = model.name
-        episodes = model.episodes.map(EpisodeDetailViewModel.init)
+        title.value = model.name ?? ""
+        episodes.value = model.episodes.map(EpisodeDetailViewModel.init)
     }
     
     func numberOfEpisodes() -> Int {
-        return episodes.count
+        return episodes.value.count
     }
     
     func getEpisode(_ indexPath: IndexPath) -> EpisodeDetailViewModel {
-        return episodes[(indexPath as NSIndexPath).row]
+        return episodes.value[(indexPath as NSIndexPath).row]
     }
-    
+
     func playEpisode(_ indexPath: IndexPath) {
-        episodes[(indexPath as NSIndexPath).row].play()
-        print("playing \(episodes[(indexPath as NSIndexPath).row].title)")
+        episodes.value[(indexPath as NSIndexPath).row].play()
+        print("playing \(episodes.value[(indexPath as NSIndexPath).row].title)")
     }
     
     func stopPlayingEpisode(_ indexPath: IndexPath) {
-        episodes[(indexPath as NSIndexPath).row].stop()
-        print("stop playing \(episodes[(indexPath as NSIndexPath).row].title) played \(episodes[(indexPath as NSIndexPath).row].played)")
-        
+        episodes.value[(indexPath as NSIndexPath).row].stop()
+        print("stop playing \(episodes.value[(indexPath as NSIndexPath).row].title) played \(episodes.value[(indexPath as NSIndexPath).row].played)")
     }
-    
+
+    func setTitle(title: String) {
+        self.title.value = title
+        self.model.name = title
+    }
+}
+
+extension EpisodeCreateViewModel {
+
+    convenience init(seasonDetailViewModel: SeasonDetailViewModel) {
+        self.init(season: seasonDetailViewModel.model, seasonService: TestSeasonsServices())
+    }
 }

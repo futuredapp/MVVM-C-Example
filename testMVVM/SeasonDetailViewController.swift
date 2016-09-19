@@ -19,6 +19,20 @@ class SeasonDetailViewController: UIViewController {
         super.viewDidLoad()
     
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "CreateEpisode" {
+            guard let vc = (segue.destination as? UINavigationController)?.viewControllers.first as? EpisodeCreateViewController   else {
+                assertionFailure("segue \(segue.identifier) destination vc is not SeasonDetailViewController")
+                return
+            }
+
+            vc.viewModel = EpisodeCreateViewModel(seasonDetailViewModel: viewModel)
+        }
+
+        super.prepare(for: segue, sender: sender)
+    }
 }
 
 extension SeasonDetailViewController: UITableViewDataSource {
@@ -28,7 +42,7 @@ extension SeasonDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        let cell = ObservingTableViewCell(style: .default, reuseIdentifier: nil)
         cell.configure(viewModel.getEpisode(indexPath))
         return cell
     }
@@ -47,9 +61,4 @@ extension SeasonDetailViewController: UITableViewDelegate {
     }
 }
 
-extension UITableViewCell {
 
-    func configure(_ viewModel: EpisodeDetailViewModel) {
-        textLabel?.text = viewModel.title
-    }
-}
