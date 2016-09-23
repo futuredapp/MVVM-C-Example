@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 class EpisodeDetailViewModel {
 
     
@@ -21,7 +19,6 @@ class EpisodeDetailViewModel {
     var played: Bool {
         return model.played
     }
-    
     
     init(model: Episode) {
         self.model = model
@@ -39,16 +36,8 @@ class EpisodeDetailViewModel {
     func stop() {
         isPlaying = false
     }
-    
-    
-    
+
     func configure() {
         title = model.name 
     }
-    
-    
-    
-    
-    
-    
 }
