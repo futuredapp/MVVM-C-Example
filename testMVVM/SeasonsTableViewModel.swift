@@ -7,27 +7,45 @@
 //
 
 import Foundation
-
+import Bond
+import PromiseKit
 
 class SeasonsTableViewModel {
 
-    var seasonsServices : SeasonsServices!
-    fileprivate var seasons: [SeasonDetailViewModel] = []
+    let seasonsServices : SeasonsServices
+    let seasons: Observable<[SeasonDetailViewModel]> = Observable([])
     
     init(seasonsServices: SeasonsServices) {
         self.seasonsServices = seasonsServices
-        load()
-    }
-    
-    func load() {
-        seasons = seasonsServices.getSeasons().map(SeasonDetailViewModel.init)
     }
 
+    @discardableResult
+    func load() -> Promise<[SeasonDetailViewModel]>  {
+
+        return Promise { fulfill, reject in
+
+            seasonsServices.seasons().then { seasons -> Void in
+
+                self.seasons.value = seasons.map {
+                    SeasonDetailViewModel(model: $0, seasonServices: self.seasonsServices)
+                }
+                fulfill(self.seasons.value)
+
+            }.catch { err in
+                reject(err)
+            }
+
+        }
+    }
+
+
+
     func seasonForIndexPath(_ indexPath: IndexPath) -> SeasonDetailViewModel {
-        return seasons[(indexPath as NSIndexPath).row]
+
+        return seasons.value[indexPath.row]
     }
     
     func numberOfSeasons() -> Int {
-        return seasons.count
+        return seasons.value.count
     }
 }

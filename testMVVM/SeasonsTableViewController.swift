@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Bond
 
 class SeasonsViewController: BaseController, Coordinated {
 
@@ -17,8 +18,10 @@ class SeasonsViewController: BaseController, Coordinated {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.load()
-        tableView.reloadData()
+        _ = viewModel.load().then { (_) -> Void in
+            self.tableView.reloadData()
+        }
+
     }
 
     func getCoordinator() -> Coordinator? {
@@ -30,6 +33,7 @@ extension SeasonsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.showEpisodes(viewModel: viewModel.seasonForIndexPath(indexPath))
     }
+
 }
 
 extension SeasonsViewController : UITableViewDataSource {
@@ -39,17 +43,10 @@ extension SeasonsViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        let cell = ObservingTableViewCell(style: .default, reuseIdentifier: nil)
         
         cell.configure(viewModel.seasonForIndexPath(indexPath))
         return cell
     }
-}
-
-
-extension UITableViewCell {
-
-    func configure(_ model: SeasonDetailViewModel) {
-        textLabel?.text = model.title
-    }
+    
 }

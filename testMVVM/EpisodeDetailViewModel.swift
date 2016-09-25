@@ -7,37 +7,44 @@
 //
 
 import Foundation
+import Bond
 
 class EpisodeDetailViewModel {
 
     
     fileprivate var model: Episode
 
-    var title: String?
-    var isPlaying : Bool = false
-    
+    let title: Observable<String> = Observable("")
+    let isPlaying : Observable<Bool> = Observable(false)
+
     var played: Bool {
         return model.played
     }
-    
+
+
     init(model: Episode) {
         self.model = model
         configure()
     }
-    
-    
+
     func play() {
-        if !isPlaying {
+        if !isPlaying.value {
             model.played = true
-            isPlaying = true
+            isPlaying.value = true
         }
     }
     
     func stop() {
-        isPlaying = false
+        isPlaying.value = false
+    }
+    
+    
+    
+    func configure() {
+        title.value = model.name ?? ""
+
     }
 
-    func configure() {
-        title = model.name 
-    }
 }
+
+

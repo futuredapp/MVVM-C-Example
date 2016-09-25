@@ -7,12 +7,26 @@
 //
 
 import XCTest
+import PromiseKit
+
+let mockupSeasons = [Season(name: "blah", episodes: [Episode(name: "episode1"), Episode(name: "episode2"), Episode(name: "episode3")])]
 
 class Test1SeasonServices: SeasonsServices {
-    
-    func getSeasons() -> [Season] {
-        let episodes = [Episode(name: "episode1"), Episode(name: "episode2"), Episode(name: "episode3")]
-        return [Season(name: "blah", episodes: episodes)]
+
+
+    func create(episode: Episode, inSeason season: Season) -> Promise<Episode> {
+        return Promise { fulfill, reject in
+            season.episodes.append(episode)
+            fulfill(episode)
+        }
+    }
+
+    func seasons() -> Promise<[Season]> {
+        return Promise { fulfill, reject in
+
+            fulfill(mockupSeasons)
+        }
+
     }
 }
 
@@ -34,53 +48,94 @@ class MVVMTestProjectTests: XCTestCase {
     func testLoadData() {
     
         let vm = SeasonsTableViewModel(seasonsServices: services)
-    
-        XCTAssert(vm.numberOfSeasons() == 1, "season 1 is missing")
-        
-        XCTAssert(vm.seasonForIndexPath(IndexPath(row: 0, section: 0)).title == "blah", "season 1 has wrong name")
-        XCTAssert(vm.seasonForIndexPath(IndexPath(row: 0, section: 0)).numberOfEpisodes() == services.getSeasons()[0].episodes.count, "season has wrong number of episodes")
+        _ = vm.load().then { _ -> Void in
+            XCTAssert(vm.numberOfSeasons() == 1, "season 1 is missing")
+
+            XCTAssert(vm.seasonForIndexPath(IndexPath(row: 0, section: 0)).title.value == "blah", "season 1 has wrong name")
+
+            XCTAssert(vm.seasonForIndexPath(IndexPath(row: 0, section: 0)).numberOfEpisodes() == mockupSeasons[0].episodes.count, "season has wrong number of episodes")
+        }
+
+
     }
     
 
-    func getEpisode() -> EpisodeDetailViewModel {
+    func getEpisode() -> Promise<EpisodeDetailViewModel> {
         let vm  = SeasonsTableViewModel(seasonsServices: services)
-        let indexPath = IndexPath(row: 0, section: 0)
-        
-        return vm.seasonForIndexPath(indexPath).getEpisode(indexPath)
+        return vm.load().then { _ -> EpisodeDetailViewModel in
+            let indexPath = IndexPath(row: 0, section: 0)
+            return vm.seasonForIndexPath(indexPath).getEpisode(indexPath)
+        }
+
+
     }
     
     func testGetEpisode() {
         
-        let episode = getEpisode()
-        
-        XCTAssert(episode.title == "episode1" , "s01e01 is missing")
+        _ = getEpisode().then { (episodeViewModel) -> Void in
+             XCTAssert(episodeViewModel.title.value == "episode1" , "s01e01 is missing")
+        }
+
     }
     
     func testPlayEpisode() {
-        let episode = getEpisode()
-        episode.play()
-        XCTAssert(episode.isPlaying, "should be playing")
+
+        _ = getEpisode().then { (episodeViewModel) -> Void in
+            episodeViewModel.play()
+            XCTAssert(episodeViewModel.isPlaying.value, "should be playing")
+
+        }
+
     }
     
     func testEpisodeWasPlayed() {
-        let episode = getEpisode()
-        XCTAssert(!episode.played, "should not be played")
-        
-        episode.play()
-        XCTAssert(episode.played, "should be played")
+
+
+        _ = getEpisode().then { (episodeViewModel) -> Void in
+            XCTAssert(!episodeViewModel.played, "should not be played")
+
+            episodeViewModel.play()
+            XCTAssert(episodeViewModel.played, "should be played")
+
+        }
+
+
         
     }
  
     func testPlayAndStopEpisode() {
-        let episodeVM = getEpisode()
-    
-        episodeVM.play()
-        XCTAssert(episodeVM.isPlaying , "episode should be playing")
-        
-        episodeVM.stop()
-        XCTAssert(!episodeVM.isPlaying , "episode should be set as played after play and stop")
-        
+
+        _ = getEpisode().then { (episodeViewModel) -> Void in
+
+            episodeViewModel.play()
+             XCTAssert(episodeViewModel.isPlaying.value, "episode should be playing")
+
+            episodeViewModel.stop()
+            XCTAssert(!episodeViewModel.isPlaying.value, "episode should be set as played after play and stop")
+            
+        }
+
     }
-    
+
+    func testAddEpisodeWithInvalidName() {
+
+        let except = expectation(description: "expectation")
+
+        let viewModel = EpisodeCreateViewModel(season: mockupSeasons[0], seasonService: services)
+        viewModel.name = ""
+
+        viewModel.save().then {
+            XCTFail("episode was created")
+        }.catch { err in
+            if case EpisodeCreateViewModel.EpisodeCreate.WrongName = err {
+                except.fulfill()
+                return
+            }
+            XCTFail("wrong error code")
+        }
+
+        waitForExpectations(timeout: 5, handler: nil)
+
+    }
     
 }
