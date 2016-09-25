@@ -8,9 +8,10 @@
 
 import UIKit
 
+/// Main entry point to the app
 class AppCoordinator: Coordinator {
 
-    var window: UIWindow
+    let window: UIWindow
 
     init(window: UIWindow) {
         self.window = window

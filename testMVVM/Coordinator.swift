@@ -9,15 +9,20 @@
 import UIKit
 
 protocol Coordinator {
+    /// Triggers navigation to the corresponding controller
     func start()
+
+    /// Called when segue navigation form corresponding controller to different controller is about to start and should handle this navigation
     func navigate(from source: UIViewController, to destination: UIViewController, with identifier: String?, and sender: AnyObject?)
 }
 
+/// Navigate method is optional as in some cases we needn't use segues
 extension Coordinator {
     func navigate(from source: UIViewController, to destination: UIViewController, with identifier: String?, and sender: AnyObject?) {
     }
 }
 
+/// Used typically on view controllers to refer to it's coordinator
 protocol Coordinated {
     func getCoordinator() -> Coordinator?
 }

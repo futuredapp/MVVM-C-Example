@@ -10,15 +10,18 @@ import UIKit
 
 class SeasonDetailCoordinator: Coordinator {
 
-    var navigationController: UINavigationController?
+    let navigationController: UINavigationController?
+    let viewModel: SeasonDetailViewModel
+    
     var viewController: SeasonDetailViewController?
-    var viewModel: SeasonDetailViewModel
 
+    /// Used for initialization without segue
     init(navigationController: UINavigationController, viewModel: SeasonDetailViewModel) {
         self.navigationController = navigationController
         self.viewModel = viewModel
     }
 
+    /// Used for initialization with segue
     init(navigationController: UINavigationController, viewController: SeasonDetailViewController, viewModel: SeasonDetailViewModel) {
         self.navigationController = navigationController
         self.viewController = viewController
@@ -26,6 +29,7 @@ class SeasonDetailCoordinator: Coordinator {
     }
 
     func start() {
+        // In this case we support both kinds of coordination - with and without segues. When coordinated without segue, self.viewController is nil and we need to instantiate it
         if viewController == nil {
             viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detailViewController") as? SeasonDetailViewController
         }

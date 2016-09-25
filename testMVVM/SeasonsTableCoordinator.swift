@@ -10,7 +10,8 @@ import UIKit
 
 class SeasonsTableCoordinator: Coordinator {
 
-    var window: UIWindow
+    let window: UIWindow
+    
     var viewController: SeasonsViewController?
 
     init(window: UIWindow) {
