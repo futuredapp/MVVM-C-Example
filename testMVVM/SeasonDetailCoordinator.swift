@@ -37,4 +37,15 @@ class SeasonDetailCoordinator: Coordinator {
         viewController!.coordinator = self
         navigationController?.pushViewController(viewController!, animated: true)
     }
+
+    func navigate(from source: UIViewController, to destination: UIViewController, with identifier: String?, and sender: AnyObject?) {
+        if let navigation = source.navigationController, let destination = destination as? UINavigationController, let viewController = destination.topViewController as? EpisodeCreateViewController, let viewModel = sender as? SeasonDetailViewModel, identifier == "createSegue" {
+            let coordinator = EpisodeCreateCoordinator(navigationController: navigation, wrapperNavigationController: destination, viewController: viewController, viewModel: viewModel)
+            coordinator.start()
+        }        
+    }
+
+    func showCreateEpisode(from viewModel: SeasonDetailViewModel) {
+        viewController?.performSegue(withIdentifier: "createSegue", sender: viewModel)
+    }
 }

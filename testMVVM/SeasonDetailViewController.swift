@@ -21,18 +21,8 @@ class SeasonDetailViewController: BaseController, Coordinated {
         return coordinator
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        if segue.identifier == "CreateEpisode" {
-            guard let vc = (segue.destination as? UINavigationController)?.viewControllers.first as? EpisodeCreateViewController   else {
-                assertionFailure("segue \(segue.identifier) destination vc is not SeasonDetailViewController")
-                return
-            }
-
-            vc.viewModel = EpisodeCreateViewModel(seasonDetailViewModel: viewModel)
-        }
-
-        super.prepare(for: segue, sender: sender)
+    @IBAction func handleCreateEpisodeButtonTap() {
+        coordinator?.showCreateEpisode(from: viewModel)
     }
 }
 

@@ -36,6 +36,7 @@
 		D0E8AA221D9832B5007EC517 /* SeasonsTableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E8AA1F1D9832B5007EC517 /* SeasonsTableCoordinator.swift */; };
 		D0E8AA241D983395007EC517 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E8AA231D983395007EC517 /* BaseController.swift */; };
 		D0E8AA261D9833B8007EC517 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E8AA251D9833B8007EC517 /* AppCoordinator.swift */; };
+		D0E8AA281D984048007EC517 /* EpisodeCreateCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E8AA271D984048007EC517 /* EpisodeCreateCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		D0E8AA1F1D9832B5007EC517 /* SeasonsTableCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonsTableCoordinator.swift; sourceTree = "<group>"; };
 		D0E8AA231D983395007EC517 /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		D0E8AA251D9833B8007EC517 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		D0E8AA271D984048007EC517 /* EpisodeCreateCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeCreateCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,8 +188,8 @@
 			children = (
 				D0E8AA231D983395007EC517 /* BaseController.swift */,
 				94924C101D82C79D00CA286E /* SeasonsTableViewController.swift */,
-				94924C241D82D60700CA286E /* SeasonDetailViewController.swift */,
 				9487B6C91D8AC4450016432F /* SeasonTableViewCell.swift */,
+				94924C241D82D60700CA286E /* SeasonDetailViewController.swift */,
 				949B8DED1D8EFC9C0024D38E /* EpisodeCreateViewController.swift */,
 			);
 			name = View;
@@ -214,8 +216,9 @@
 			children = (
 				D0E8AA1D1D9832B5007EC517 /* Coordinator.swift */,
 				D0E8AA251D9833B8007EC517 /* AppCoordinator.swift */,
-				D0E8AA1E1D9832B5007EC517 /* SeasonDetailCoordinator.swift */,
 				D0E8AA1F1D9832B5007EC517 /* SeasonsTableCoordinator.swift */,
+				D0E8AA1E1D9832B5007EC517 /* SeasonDetailCoordinator.swift */,
+				D0E8AA271D984048007EC517 /* EpisodeCreateCoordinator.swift */,
 			);
 			name = Coordinator;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 			files = (
 				949B8DF31D8FBC4D0024D38E /* EpisodeEditViewModel.swift in Sources */,
 				94924C231D82C89200CA286E /* SeasonService.swift in Sources */,
+				D0E8AA281D984048007EC517 /* EpisodeCreateCoordinator.swift in Sources */,
 				D0E8AA261D9833B8007EC517 /* AppCoordinator.swift in Sources */,
 				D0E8AA201D9832B5007EC517 /* Coordinator.swift in Sources */,
 				94AE30961D86CDF00020A99C /* SeasonDetailViewModel.swift in Sources */,

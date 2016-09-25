@@ -33,7 +33,7 @@ class SeasonsTableCoordinator: Coordinator {
         }
     }
 
-    func showEpisodes(viewModel: SeasonDetailViewModel) {
+    func showEpisodes(from viewModel: SeasonDetailViewModel) {
         viewController?.performSegue(withIdentifier: "showEpisodes", sender: viewModel)
 
 

@@ -59,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-9" y="511"/>
+            <point key="canvasLocation" x="316" y="573"/>
         </scene>
         <!--Title-->
         <scene sceneID="0s0-LI-jw1">
@@ -92,21 +92,23 @@
                     <navigationItem key="navigationItem" title="Title" id="m69-9d-XQf">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dDB-mN-45V">
                             <connections>
-                                <segue destination="XZ0-ab-Klz" kind="presentation" id="3AR-pe-mTg"/>
+                                <action selector="handleCreateEpisodeButtonTap" destination="vQX-6O-Sam" id="VAk-Zi-A97"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="gmg-qY-4D8" id="jGC-8W-JJs"/>
+                        <segue destination="XZ0-ab-Klz" kind="presentation" identifier="createSegue" customClass="CoordinatorSegue" customModule="MVVMTestProject" customModuleProvider="target" id="n9u-gz-fFc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w0q-Hj-Zgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1173" y="575"/>
+            <point key="canvasLocation" x="1068" y="573"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l1U-U2-upg">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SiH-tE-SUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="XZ0-ab-Klz" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bxj-91-oQD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -116,9 +118,8 @@
                         <segue destination="jn9-HH-bkO" kind="relationship" relationship="rootViewController" id="LkQ-CP-hSY"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SiH-tE-SUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2269" y="418"/>
+            <point key="canvasLocation" x="2236" y="573"/>
         </scene>
         <!--Create episode-->
         <scene sceneID="7Pn-pY-Ikx">
@@ -182,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRv-Bc-Lea" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3261" y="417"/>
+            <point key="canvasLocation" x="2993" y="573"/>
         </scene>
     </scenes>
 </document>

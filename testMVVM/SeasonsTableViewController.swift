@@ -31,7 +31,7 @@ class SeasonsViewController: BaseController, Coordinated {
 
 extension SeasonsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.showEpisodes(viewModel: viewModel.seasonForIndexPath(indexPath))
+        coordinator?.showEpisodes(from: viewModel.seasonForIndexPath(indexPath))
     }
 
 }
