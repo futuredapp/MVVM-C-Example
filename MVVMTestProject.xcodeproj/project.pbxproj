@@ -24,6 +24,11 @@
 		94AE309E1D86CED90020A99C /* SeasonsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94924C201D82C80400CA286E /* SeasonsTableViewModel.swift */; };
 		94AE309F1D86CED90020A99C /* SeasonDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AE30951D86CDF00020A99C /* SeasonDetailViewModel.swift */; };
 		94AE30A01D86CED90020A99C /* EpisodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94924C261D82D6BE00CA286E /* EpisodeDetailViewModel.swift */; };
+		D05FF4A51D8EAF620014E4DD /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FF4A41D8EAF620014E4DD /* Coordinator.swift */; };
+		D05FF4A71D8EE7720014E4DD /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FF4A61D8EE7720014E4DD /* AppCoordinator.swift */; };
+		D05FF4A91D8EEA3E0014E4DD /* SeasonsTableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FF4A81D8EEA3E0014E4DD /* SeasonsTableCoordinator.swift */; };
+		D05FF4AB1D8EFC240014E4DD /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FF4AA1D8EFC240014E4DD /* BaseController.swift */; };
+		D05FF4B11D8F12120014E4DD /* SeasonDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FF4B01D8F12120014E4DD /* SeasonDetailCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,11 @@
 		94AE308B1D86B5DC0020A99C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94AE30951D86CDF00020A99C /* SeasonDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonDetailViewModel.swift; sourceTree = "<group>"; };
 		94AE309A1D86CECA0020A99C /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		D05FF4A41D8EAF620014E4DD /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		D05FF4A61D8EE7720014E4DD /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		D05FF4A81D8EEA3E0014E4DD /* SeasonsTableCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonsTableCoordinator.swift; sourceTree = "<group>"; };
+		D05FF4AA1D8EFC240014E4DD /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
+		D05FF4B01D8F12120014E4DD /* SeasonDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonDetailCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +104,7 @@
 		94924C0D1D82C79D00CA286E /* testMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				D05FF4A31D8EAF540014E4DD /* Coordinators */,
 				94924C0E1D82C79D00CA286E /* AppDelegate.swift */,
 				94AE30981D86CEA50020A99C /* Services */,
 				94AE30971D86CE410020A99C /* View */,
@@ -130,6 +141,7 @@
 		94AE30971D86CE410020A99C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D05FF4AA1D8EFC240014E4DD /* BaseController.swift */,
 				94924C101D82C79D00CA286E /* SeasonsTableViewController.swift */,
 				94924C241D82D60700CA286E /* SeasonDetailViewController.swift */,
 			);
@@ -150,6 +162,17 @@
 				94AE309A1D86CECA0020A99C /* Model.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		D05FF4A31D8EAF540014E4DD /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				D05FF4A41D8EAF620014E4DD /* Coordinator.swift */,
+				D05FF4A61D8EE7720014E4DD /* AppCoordinator.swift */,
+				D05FF4A81D8EEA3E0014E4DD /* SeasonsTableCoordinator.swift */,
+				D05FF4B01D8F12120014E4DD /* SeasonDetailCoordinator.swift */,
+			);
+			name = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,14 +279,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D05FF4B11D8F12120014E4DD /* SeasonDetailCoordinator.swift in Sources */,
 				94924C231D82C89200CA286E /* SeasonService.swift in Sources */,
 				94AE30961D86CDF00020A99C /* SeasonDetailViewModel.swift in Sources */,
+				D05FF4A71D8EE7720014E4DD /* AppCoordinator.swift in Sources */,
 				94924C211D82C80400CA286E /* SeasonsTableViewModel.swift in Sources */,
 				94924C251D82D60700CA286E /* SeasonDetailViewController.swift in Sources */,
 				94924C111D82C79D00CA286E /* SeasonsTableViewController.swift in Sources */,
 				94924C0F1D82C79D00CA286E /* AppDelegate.swift in Sources */,
+				D05FF4A91D8EEA3E0014E4DD /* SeasonsTableCoordinator.swift in Sources */,
 				94924C271D82D6BE00CA286E /* EpisodeDetailViewModel.swift in Sources */,
 				94AE309B1D86CECA0020A99C /* Model.swift in Sources */,
+				D05FF4AB1D8EFC240014E4DD /* BaseController.swift in Sources */,
+				D05FF4A51D8EAF620014E4DD /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -390,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

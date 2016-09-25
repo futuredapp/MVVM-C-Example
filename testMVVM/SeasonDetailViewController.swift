@@ -10,14 +10,15 @@
 import Foundation
 import UIKit
 
-class SeasonDetailViewController: UIViewController {
-    
+class SeasonDetailViewController: BaseController, Coordinated {
+
     @IBOutlet var tableView: UITableView!
+
     var viewModel: SeasonDetailViewModel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
+    var coordinator: SeasonDetailCoordinator?
+
+    func getCoordinator() -> Coordinator? {
+        return coordinator
     }
 }
 
@@ -34,11 +35,9 @@ extension SeasonDetailViewController: UITableViewDataSource {
     }
 }
 
-
 extension SeasonDetailViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
         viewModel.playEpisode(indexPath)
     }
     
