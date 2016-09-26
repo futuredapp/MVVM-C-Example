@@ -9,43 +9,29 @@
 import UIKit
 import Bond
 
-class SeasonsViewController: UIViewController {
+class SeasonsViewController: BaseController, Coordinated {
 
     @IBOutlet weak var tableView: UITableView!
+
     var viewModel: SeasonsTableViewModel!
-    
+    var coordinator: SeasonsTableCoordinator?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = SeasonsTableViewModel(seasonsServices: TestSeasonsServices())
         _ = viewModel.load().then { (_) -> Void in
             self.tableView.reloadData()
         }
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func getCoordinator() -> Coordinator? {
+        return coordinator
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        if segue.identifier == "showEpisodes" {
-            guard let vc = segue.destination as? SeasonDetailViewController, let viewModel = sender as? SeasonDetailViewModel  else {
-                assertionFailure("segue \(segue.identifier) destination vc is not SeasonDetailViewController")
-                return
-            }
-
-            vc.viewModel = viewModel
-        }
-    }
-    
 }
 
 extension SeasonsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showEpisodes", sender: viewModel.seasonForIndexPath(indexPath))
+        coordinator?.showEpisodes(from: viewModel.seasonForIndexPath(indexPath))
     }
 
 }
@@ -62,8 +48,5 @@ extension SeasonsViewController : UITableViewDataSource {
         cell.configure(viewModel.seasonForIndexPath(indexPath))
         return cell
     }
-
+    
 }
-
-
-

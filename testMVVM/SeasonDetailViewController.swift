@@ -10,28 +10,19 @@
 import Foundation
 import UIKit
 
-class SeasonDetailViewController: UIViewController {
-    
+class SeasonDetailViewController: BaseController, Coordinated {
+
     @IBOutlet var tableView: UITableView!
+
     var viewModel: SeasonDetailViewModel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
+    var coordinator: SeasonDetailCoordinator?
+
+    func getCoordinator() -> Coordinator? {
+        return coordinator
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        if segue.identifier == "CreateEpisode" {
-            guard let vc = (segue.destination as? UINavigationController)?.viewControllers.first as? EpisodeCreateViewController   else {
-                assertionFailure("segue \(segue.identifier) destination vc is not SeasonDetailViewController")
-                return
-            }
-
-            vc.viewModel = EpisodeCreateViewModel(seasonDetailViewModel: viewModel)
-        }
-
-        super.prepare(for: segue, sender: sender)
+    @IBAction func handleCreateEpisodeButtonTap() {
+        coordinator?.showCreateEpisode(from: viewModel)
     }
 }
 
@@ -48,11 +39,9 @@ extension SeasonDetailViewController: UITableViewDataSource {
     }
 }
 
-
 extension SeasonDetailViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
         viewModel.playEpisode(indexPath)
     }
     

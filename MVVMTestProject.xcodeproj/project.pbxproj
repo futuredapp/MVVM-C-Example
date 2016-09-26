@@ -31,6 +31,12 @@
 		94AE309E1D86CED90020A99C /* SeasonsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94924C201D82C80400CA286E /* SeasonsTableViewModel.swift */; };
 		94AE309F1D86CED90020A99C /* SeasonDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AE30951D86CDF00020A99C /* SeasonDetailViewModel.swift */; };
 		94AE30A01D86CED90020A99C /* EpisodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94924C261D82D6BE00CA286E /* EpisodeDetailViewModel.swift */; };
+		D0E8AA201D9832B5007EC517 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E8AA1D1D9832B5007EC517 /* Coordinator.swift */; };
+		D0E8AA211D9832B5007EC517 /* SeasonDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E8AA1E1D9832B5007EC517 /* SeasonDetailCoordinator.swift */; };
+		D0E8AA221D9832B5007EC517 /* SeasonsTableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E8AA1F1D9832B5007EC517 /* SeasonsTableCoordinator.swift */; };
+		D0E8AA241D983395007EC517 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E8AA231D983395007EC517 /* BaseController.swift */; };
+		D0E8AA261D9833B8007EC517 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E8AA251D9833B8007EC517 /* AppCoordinator.swift */; };
+		D0E8AA281D984048007EC517 /* EpisodeCreateCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E8AA271D984048007EC517 /* EpisodeCreateCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +76,12 @@
 		94AE309A1D86CECA0020A99C /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A04F71B848679EA3ABB8CCCA /* Pods-MVVMTestProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMTestProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMTestProject/Pods-MVVMTestProject.release.xcconfig"; sourceTree = "<group>"; };
 		B35CED9192716535E7A9BB15 /* Pods-MVVMTestProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMTestProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMTestProjectTests/Pods-MVVMTestProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D0E8AA1D1D9832B5007EC517 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		D0E8AA1E1D9832B5007EC517 /* SeasonDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonDetailCoordinator.swift; sourceTree = "<group>"; };
+		D0E8AA1F1D9832B5007EC517 /* SeasonsTableCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonsTableCoordinator.swift; sourceTree = "<group>"; };
+		D0E8AA231D983395007EC517 /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
+		D0E8AA251D9833B8007EC517 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		D0E8AA271D984048007EC517 /* EpisodeCreateCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeCreateCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +149,7 @@
 			children = (
 				94924C0E1D82C79D00CA286E /* AppDelegate.swift */,
 				94AE30981D86CEA50020A99C /* Services */,
+				D0E8AA1C1D983279007EC517 /* Coordinator */,
 				94AE30971D86CE410020A99C /* View */,
 				94AE30941D86CD360020A99C /* ViewModel */,
 				94AE30991D86CEB40020A99C /* Model */,
@@ -173,9 +186,10 @@
 		94AE30971D86CE410020A99C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D0E8AA231D983395007EC517 /* BaseController.swift */,
 				94924C101D82C79D00CA286E /* SeasonsTableViewController.swift */,
-				94924C241D82D60700CA286E /* SeasonDetailViewController.swift */,
 				9487B6C91D8AC4450016432F /* SeasonTableViewCell.swift */,
+				94924C241D82D60700CA286E /* SeasonDetailViewController.swift */,
 				949B8DED1D8EFC9C0024D38E /* EpisodeCreateViewController.swift */,
 			);
 			name = View;
@@ -195,6 +209,18 @@
 				94AE309A1D86CECA0020A99C /* Model.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		D0E8AA1C1D983279007EC517 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				D0E8AA1D1D9832B5007EC517 /* Coordinator.swift */,
+				D0E8AA251D9833B8007EC517 /* AppCoordinator.swift */,
+				D0E8AA1F1D9832B5007EC517 /* SeasonsTableCoordinator.swift */,
+				D0E8AA1E1D9832B5007EC517 /* SeasonDetailCoordinator.swift */,
+				D0E8AA271D984048007EC517 /* EpisodeCreateCoordinator.swift */,
+			);
+			name = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,7 +341,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		0428B6324D7FA9D79DEC2D85 /* [CP] Copy Pods Resources */ = {
@@ -390,7 +416,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -402,6 +428,9 @@
 			files = (
 				949B8DF31D8FBC4D0024D38E /* EpisodeEditViewModel.swift in Sources */,
 				94924C231D82C89200CA286E /* SeasonService.swift in Sources */,
+				D0E8AA281D984048007EC517 /* EpisodeCreateCoordinator.swift in Sources */,
+				D0E8AA261D9833B8007EC517 /* AppCoordinator.swift in Sources */,
+				D0E8AA201D9832B5007EC517 /* Coordinator.swift in Sources */,
 				94AE30961D86CDF00020A99C /* SeasonDetailViewModel.swift in Sources */,
 				949B8DEE1D8EFC9C0024D38E /* EpisodeCreateViewController.swift in Sources */,
 				94924C211D82C80400CA286E /* SeasonsTableViewModel.swift in Sources */,
@@ -409,9 +438,12 @@
 				94924C251D82D60700CA286E /* SeasonDetailViewController.swift in Sources */,
 				94924C111D82C79D00CA286E /* SeasonsTableViewController.swift in Sources */,
 				94924C0F1D82C79D00CA286E /* AppDelegate.swift in Sources */,
+				D0E8AA211D9832B5007EC517 /* SeasonDetailCoordinator.swift in Sources */,
 				94924C271D82D6BE00CA286E /* EpisodeDetailViewModel.swift in Sources */,
 				949B8DF01D8EFCFD0024D38E /* EpisodeCreateViewModel.swift in Sources */,
 				94AE309B1D86CECA0020A99C /* Model.swift in Sources */,
+				D0E8AA241D983395007EC517 /* BaseController.swift in Sources */,
+				D0E8AA221D9832B5007EC517 /* SeasonsTableCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
