@@ -21,11 +21,8 @@ class SeasonsTableViewModel {
 
     @discardableResult
     func load() -> Promise<[SeasonDetailViewModel]>  {
-
         return Promise { fulfill, reject in
-
             seasonsServices.seasons().then { seasons -> Void in
-
                 self.seasons.value = seasons.map {
                     SeasonDetailViewModel(model: $0, seasonServices: self.seasonsServices)
                 }
@@ -34,14 +31,10 @@ class SeasonsTableViewModel {
             }.catch { err in
                 reject(err)
             }
-
         }
     }
 
-
-
     func seasonForIndexPath(_ indexPath: IndexPath) -> SeasonDetailViewModel {
-
         return seasons.value[indexPath.row]
     }
     

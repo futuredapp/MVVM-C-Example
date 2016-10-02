@@ -21,7 +21,6 @@ class SeasonsViewController: BaseController, Coordinated {
         _ = viewModel.load().then { (_) -> Void in
             self.tableView.reloadData()
         }
-
     }
 
     func getCoordinator() -> Coordinator? {

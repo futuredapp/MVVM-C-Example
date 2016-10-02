@@ -26,7 +26,6 @@ class EpisodeCreateViewModel {
     }
 
     func save() -> Promise<Void> {
-
         return firstly { _ -> Promise<Episode> in
             guard let name = name, name != "" else {
                 throw EpisodeCreate.WrongName
@@ -34,9 +33,6 @@ class EpisodeCreateViewModel {
 
             return seasonService.create(episode: Episode(name: name), inSeason: season)
             }.then { episode -> Void in
-         
         }
-
     }
-
 }

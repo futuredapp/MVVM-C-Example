@@ -20,7 +20,6 @@ class EpisodeCreateViewController: UIViewController {
     }
 
     @IBAction func save() {
-
         _ = viewModel.save().then { _ -> Void in
             self.dismiss(animated: true, completion: nil)
             }.catch { err in

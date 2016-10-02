@@ -13,21 +13,16 @@ import ReactiveKit
 
 class ObservingTableViewCell: UITableViewCell {
 
-
     var onReuseBag: DisposeBag = DisposeBag()
 
     override func prepareForReuse() {
         super.prepareForReuse()
         onReuseBag.dispose()
     }
-
-
 }
 
 extension ObservingTableViewCell {
-
     func configure(_ viewModel: SeasonDetailViewModel) {
-
         if let label = textLabel {
             viewModel.title.bind(to: label.bnd_text).disposeIn(onReuseBag)
         }
@@ -35,13 +30,9 @@ extension ObservingTableViewCell {
 }
 
 extension ObservingTableViewCell {
-
     func configure(_ viewModel: EpisodeDetailViewModel) {
-
         if let label = textLabel {
             viewModel.title.bind(to: label.bnd_text).disposeIn(onReuseBag)
         }
-
-
     }
 }

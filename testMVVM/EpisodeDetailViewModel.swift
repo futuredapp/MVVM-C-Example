@@ -10,7 +10,6 @@ import Foundation
 import Bond
 
 class EpisodeDetailViewModel {
-
     
     fileprivate var model: Episode
 
@@ -20,7 +19,6 @@ class EpisodeDetailViewModel {
     var played: Bool {
         return model.played
     }
-
 
     init(model: Episode) {
         self.model = model
@@ -37,14 +35,8 @@ class EpisodeDetailViewModel {
     func stop() {
         isPlaying.value = false
     }
-    
-    
-    
+
     func configure() {
         title.value = model.name ?? ""
-
     }
-
 }
-
-
