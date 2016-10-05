@@ -13,7 +13,7 @@ class SeasonDetailCoordinator: Coordinator {
     let navigationController: UINavigationController?
     let viewModel: SeasonDetailViewModel
     
-    var viewController: SeasonDetailViewController?
+    weak var viewController: SeasonDetailViewController?
 
     /// Used for initialization without segue
     init(navigationController: UINavigationController, viewModel: SeasonDetailViewModel) {

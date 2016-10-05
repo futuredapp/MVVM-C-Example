@@ -12,7 +12,7 @@ class SeasonsTableCoordinator: Coordinator {
 
     let window: UIWindow
     
-    var viewController: SeasonsViewController?
+    weak var viewController: SeasonsViewController?
 
     init(window: UIWindow) {
         self.window = window
