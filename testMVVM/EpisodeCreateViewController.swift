@@ -12,6 +12,7 @@ import UIKit
 class EpisodeCreateViewController: UIViewController {
 
     var viewModel: EpisodeCreateViewModel!
+    var coordinator: EpisodeCreateCoordinator?
 
     @IBOutlet weak var nameTextField:  UITextField!
 
@@ -21,13 +22,13 @@ class EpisodeCreateViewController: UIViewController {
 
     @IBAction func save() {
         _ = viewModel.save().then { _ -> Void in
-            self.dismiss(animated: true, completion: nil)
+            self.coordinator?.stop()
             }.catch { err in
             print(err)
         }
     }
 
     @IBAction func cancel() {
-        self.dismiss(animated: true, completion: nil)
+        coordinator?.stop()
     }
 }

@@ -49,3 +49,9 @@ class SeasonDetailCoordinator: Coordinator {
         viewController?.performSegue(withIdentifier: "createSegue", sender: viewModel)
     }
 }
+
+extension SeasonDetailCoordinator: EpisodeCreateCoordinatorDelegate {
+    func didStop(in coordinator: EpisodeCreateCoordinator) {
+        print("create coordinator finished")
+    }
+}

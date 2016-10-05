@@ -8,13 +8,19 @@
 
 import UIKit
 
+protocol EpisodeCreateCoordinatorDelegate: class {
+    func didStop(in coordinator: EpisodeCreateCoordinator)
+}
+
 class EpisodeCreateCoordinator: Coordinator {
 
     let navigationController: UINavigationController
     let viewModel: SeasonDetailViewModel
 
-    let wrapperNavigationController: UINavigationController?
-    var viewController: EpisodeCreateViewController
+    weak var wrapperNavigationController: UINavigationController?
+    weak var viewController: EpisodeCreateViewController?
+
+    weak var delegate: EpisodeCreateCoordinatorDelegate?
 
     init(navigationController: UINavigationController, wrapperNavigationController: UINavigationController, viewController: EpisodeCreateViewController, viewModel: SeasonDetailViewModel) {
         self.navigationController = navigationController
@@ -24,8 +30,13 @@ class EpisodeCreateCoordinator: Coordinator {
     }
 
     func start() {
-        viewController.viewModel = EpisodeCreateViewModel(seasonDetailViewModel: viewModel)
+        guard let viewController = viewController else {
+            return
+        }
 
+        viewController.viewModel = EpisodeCreateViewModel(seasonDetailViewModel: viewModel)
+        viewController.coordinator = self
+        
         if let wrapperNavigationController = wrapperNavigationController {
             // wrapper navigation controller means VC should be presented modally
             navigationController.present(wrapperNavigationController, animated: true, completion: nil)
@@ -35,4 +46,8 @@ class EpisodeCreateCoordinator: Coordinator {
         }
     }
 
+    func stop() {
+        delegate?.didStop(in: self)
+        viewController?.dismiss(animated: true, completion: nil)
+    }
 }
