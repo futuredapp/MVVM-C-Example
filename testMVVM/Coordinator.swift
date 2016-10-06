@@ -22,9 +22,79 @@ extension Coordinator {
     }
 }
 
+protocol DefaultCoordinator: Coordinator {
+    associatedtype VC: UIViewController
+    weak var viewController: VC? { get set }
+}
+
+protocol PushCoordinator: DefaultCoordinator {
+    var config: ((VC) -> ())? { get }
+    var navigationController: UINavigationController { get }
+}
+
+protocol ModalCoordinator: DefaultCoordinator {
+    var config: ((VC) -> ())? { get }
+    var navigationController: UINavigationController { get }
+    weak var wrapperNavigationController: UINavigationController? { get }
+}
+
+protocol PushModalCoordinator: DefaultCoordinator {
+    var config: ((VC) -> ())? { get }
+    var navigationController: UINavigationController? { get }
+    weak var wrapperNavigationController: UINavigationController? { get }
+}
+
+extension PushCoordinator where VC: UIViewController, VC: Coordinated {
+    func start() {
+        guard let viewController = viewController else {
+            return
+        }
+
+        config?(viewController)
+        viewController.setCoordinator(self)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+}
+
+extension ModalCoordinator where VC: UIViewController, VC: Coordinated {
+    func start() {
+        guard let viewController = viewController else {
+            return
+        }
+
+        config?(viewController)
+        viewController.setCoordinator(self)
+
+        if let wrapperNavigationController = wrapperNavigationController {
+            navigationController.present(wrapperNavigationController, animated: true, completion: nil)
+        }
+    }
+}
+
+extension PushModalCoordinator where VC: UIViewController, VC: Coordinated {
+    func start() {
+        guard let viewController = viewController else {
+            return
+        }
+
+        config?(viewController)        
+        viewController.setCoordinator(self)
+
+        if let wrapperNavigationController = wrapperNavigationController {
+            // wrapper navigation controller means VC should be presented modally
+            navigationController?.present(wrapperNavigationController, animated: true, completion: nil)
+        } else {
+            // present controller normally (initializer for this case not implemented, just an exploration of a possible future case)
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+}
+
+
 /// Used typically on view controllers to refer to it's coordinator
 protocol Coordinated {
     func getCoordinator() -> Coordinator?
+    func setCoordinator(_ coordinator: Coordinator)
 }
 
 class CoordinatorSegue: UIStoryboardSegue {

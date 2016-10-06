@@ -9,10 +9,18 @@
 import Foundation
 import UIKit
 
-class EpisodeCreateViewController: UIViewController {
+class EpisodeCreateViewController: UIViewController, Coordinated {
 
     var viewModel: EpisodeCreateViewModel!
     var coordinator: EpisodeCreateCoordinator?
+
+    func getCoordinator() -> Coordinator? {
+        return coordinator
+    }
+
+    func setCoordinator(_ coordinator: Coordinator) {
+        self.coordinator = coordinator as? EpisodeCreateCoordinator
+    }
 
     @IBOutlet weak var nameTextField:  UITextField!
 

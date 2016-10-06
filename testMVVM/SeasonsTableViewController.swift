@@ -26,6 +26,10 @@ class SeasonsViewController: BaseController, Coordinated {
     func getCoordinator() -> Coordinator? {
         return coordinator
     }
+
+    func setCoordinator(_ coordinator: Coordinator) {
+        self.coordinator = coordinator as? SeasonsTableCoordinator
+    }
 }
 
 extension SeasonsViewController : UITableViewDelegate {

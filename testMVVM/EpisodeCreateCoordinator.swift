@@ -8,14 +8,19 @@
 
 import UIKit
 
+// TODO: generalize
 protocol EpisodeCreateCoordinatorDelegate: class {
+    func willStop(in coordinator: EpisodeCreateCoordinator)
     func didStop(in coordinator: EpisodeCreateCoordinator)
 }
 
-class EpisodeCreateCoordinator: Coordinator {
-
-    let navigationController: UINavigationController
+class EpisodeCreateCoordinator: PushModalCoordinator {
+    let navigationController: UINavigationController?
     let viewModel: SeasonDetailViewModel
+
+    lazy internal var config: ((EpisodeCreateViewController) -> ())? = { vc in
+        vc.viewModel = EpisodeCreateViewModel(seasonDetailViewModel: self.viewModel)
+    }    
 
     weak var wrapperNavigationController: UINavigationController?
     weak var viewController: EpisodeCreateViewController?
@@ -29,25 +34,10 @@ class EpisodeCreateCoordinator: Coordinator {
         self.viewModel = viewModel
     }
 
-    func start() {
-        guard let viewController = viewController else {
-            return
-        }
-
-        viewController.viewModel = EpisodeCreateViewModel(seasonDetailViewModel: viewModel)
-        viewController.coordinator = self
-        
-        if let wrapperNavigationController = wrapperNavigationController {
-            // wrapper navigation controller means VC should be presented modally
-            navigationController.present(wrapperNavigationController, animated: true, completion: nil)
-        } else {
-            // present controller normally (initializer for this case not implemented, just an exploration of a possible future case)
-            navigationController.pushViewController(viewController, animated: true)
-        }
-    }
-
     func stop() {
-        delegate?.didStop(in: self)
-        viewController?.dismiss(animated: true, completion: nil)
+        delegate?.willStop(in: self)
+        viewController?.dismiss(animated: true, completion: { 
+            delegate?.didStop(in: self)
+        })
     }
 }
