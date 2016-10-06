@@ -34,18 +34,18 @@ protocol DefaultCoordinator: Coordinator {
 }
 
 protocol PushCoordinator: DefaultCoordinator {
-    var config: ((VC) -> ())? { get }
+    var configuration: ((VC) -> ())? { get }
     var navigationController: UINavigationController { get }
 }
 
 protocol ModalCoordinator: DefaultCoordinator {
-    var config: ((VC) -> ())? { get }
+    var configuration: ((VC) -> ())? { get }
     var navigationController: UINavigationController { get }
     weak var wrapperNavigationController: UINavigationController? { get }
 }
 
 protocol PushModalCoordinator: DefaultCoordinator {
-    var config: ((VC) -> ())? { get }
+    var configuration: ((VC) -> ())? { get }
     var navigationController: UINavigationController? { get }
     weak var wrapperNavigationController: UINavigationController? { get }
 }
@@ -56,7 +56,7 @@ extension PushCoordinator where VC: UIViewController, VC: Coordinated {
             return
         }
 
-        config?(viewController)
+        configuration?(viewController)
         viewController.setCoordinator(self)
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -68,7 +68,7 @@ extension ModalCoordinator where VC: UIViewController, VC: Coordinated {
             return
         }
 
-        config?(viewController)
+        configuration?(viewController)
         viewController.setCoordinator(self)
 
         if let wrapperNavigationController = wrapperNavigationController {
@@ -83,7 +83,7 @@ extension PushModalCoordinator where VC: UIViewController, VC: Coordinated {
             return
         }
 
-        config?(viewController)        
+        configuration?(viewController)
         viewController.setCoordinator(self)
 
         if let wrapperNavigationController = wrapperNavigationController {

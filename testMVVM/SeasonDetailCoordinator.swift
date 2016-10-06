@@ -9,7 +9,7 @@
 import UIKit
 
 class SeasonDetailCoordinator: PushCoordinator {
-    lazy internal var config: ((SeasonDetailViewController) -> ())? = { vc in
+    lazy internal var configuration: ((SeasonDetailViewController) -> ())? = { vc in
         vc.viewModel = self.viewModel
     }
 

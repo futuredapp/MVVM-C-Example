@@ -18,7 +18,7 @@ class EpisodeCreateCoordinator: PushModalCoordinator {
     let navigationController: UINavigationController?
     let viewModel: SeasonDetailViewModel
 
-    lazy internal var config: ((EpisodeCreateViewController) -> ())? = { vc in
+    lazy internal var configuration: ((EpisodeCreateViewController) -> ())? = { vc in
         vc.viewModel = EpisodeCreateViewModel(seasonDetailViewModel: self.viewModel)
     }    
 

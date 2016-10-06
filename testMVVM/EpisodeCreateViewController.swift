@@ -31,7 +31,7 @@ class EpisodeCreateViewController: UIViewController, Coordinated {
     @IBAction func save() {
         _ = viewModel.save().then { _ -> Void in
             self.coordinator?.stop()
-            }.catch { err in
+        }.catch { err in
             print(err)
         }
     }
