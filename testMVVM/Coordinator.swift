@@ -12,13 +12,19 @@ protocol Coordinator {
     /// Triggers navigation to the corresponding controller
     func start()
 
+    /// Stops corresponding controller and returns back to previous one
+    func stop()
+
     /// Called when segue navigation form corresponding controller to different controller is about to start and should handle this navigation
     func navigate(from source: UIViewController, to destination: UIViewController, with identifier: String?, and sender: AnyObject?)
 }
 
-/// Navigate method is optional as in some cases we needn't use segues
+/// Navigate and stop methods are optional
 extension Coordinator {
     func navigate(from source: UIViewController, to destination: UIViewController, with identifier: String?, and sender: AnyObject?) {
+    }
+
+    func stop() {
     }
 }
 

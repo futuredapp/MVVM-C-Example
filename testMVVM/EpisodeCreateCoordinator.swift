@@ -37,7 +37,7 @@ class EpisodeCreateCoordinator: PushModalCoordinator {
     func stop() {
         delegate?.willStop(in: self)
         viewController?.dismiss(animated: true, completion: { 
-            delegate?.didStop(in: self)
+            self.delegate?.didStop(in: self)
         })
     }
 }
