@@ -20,7 +20,10 @@ class EpisodeCreateCoordinator: PushModalCoordinator {
 
     lazy internal var configuration: ((EpisodeCreateViewController) -> ())? = { vc in
         vc.viewModel = EpisodeCreateViewModel(seasonDetailViewModel: self.viewModel)
-    }    
+    }
+
+    // uncomment to present controller without animation
+    // var animated: Bool = false
 
     weak var wrapperNavigationController: UINavigationController?
     weak var viewController: EpisodeCreateViewController?
