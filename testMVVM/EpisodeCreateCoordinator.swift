@@ -8,12 +8,6 @@
 
 import UIKit
 
-// TODO: generalize
-protocol EpisodeCreateCoordinatorDelegate: class {
-    func willStop(in coordinator: EpisodeCreateCoordinator)
-    func didStop(in coordinator: EpisodeCreateCoordinator)
-}
-
 class EpisodeCreateCoordinator: PushModalCoordinator {
     let navigationController: UINavigationController?
     let viewModel: SeasonDetailViewModel
@@ -28,7 +22,7 @@ class EpisodeCreateCoordinator: PushModalCoordinator {
     weak var destinationNavigationController: UINavigationController?
     weak var viewController: EpisodeCreateViewController?
 
-    weak var delegate: EpisodeCreateCoordinatorDelegate?
+    weak var delegate: CoordinatorDelegate?
 
     init(navigationController: UINavigationController, destinationNavigationController: UINavigationController, viewController: EpisodeCreateViewController, viewModel: SeasonDetailViewModel) {
         self.navigationController = navigationController

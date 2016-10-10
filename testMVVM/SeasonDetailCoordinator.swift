@@ -44,12 +44,12 @@ class SeasonDetailCoordinator: PushCoordinator {
     }
 }
 
-extension SeasonDetailCoordinator: EpisodeCreateCoordinatorDelegate {
-    internal func willStop(in coordinator: EpisodeCreateCoordinator) {
-        
+extension SeasonDetailCoordinator: CoordinatorDelegate {
+    func willStop(in coordinator: Coordinator) {
+        print("coordinator will stop")
     }
 
-    func didStop(in coordinator: EpisodeCreateCoordinator) {
-        print("create coordinator finished")
+    func didStop(in coordinator: Coordinator) {
+        print("coordinator stopped")
     }
 }

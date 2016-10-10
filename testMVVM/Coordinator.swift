@@ -33,6 +33,7 @@ protocol DefaultCoordinator: Coordinator {
     weak var viewController: VC? { get set }
 
     var animated: Bool { get }
+    weak var delegate: CoordinatorDelegate? { get }
 }
 
 protocol PushCoordinator: DefaultCoordinator {
@@ -53,9 +54,17 @@ protocol PushModalCoordinator: DefaultCoordinator {
 }
 
 extension DefaultCoordinator {
+    // default implementation if not overriden
     var animated: Bool {
         get {
             return true
+        }
+    }
+
+    // default implementation of nil delegate, should be overriden when needed
+    weak var delegate: CoordinatorDelegate? {
+        get {
+            return nil
         }
     }
 }
@@ -106,6 +115,11 @@ extension PushModalCoordinator where VC: UIViewController, VC: Coordinated {
     }
 }
 
+
+protocol CoordinatorDelegate: class {
+    func willStop(in coordinator: Coordinator)
+    func didStop(in coordinator: Coordinator)
+}
 
 /// Used typically on view controllers to refer to it's coordinator
 protocol Coordinated {
