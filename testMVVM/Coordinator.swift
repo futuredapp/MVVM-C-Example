@@ -43,13 +43,13 @@ protocol PushCoordinator: DefaultCoordinator {
 protocol ModalCoordinator: DefaultCoordinator {
     var configuration: ((VC) -> ())? { get }
     var navigationController: UINavigationController { get }
-    weak var wrapperNavigationController: UINavigationController? { get }
+    weak var destinationNavigationController: UINavigationController? { get }
 }
 
 protocol PushModalCoordinator: DefaultCoordinator {
     var configuration: ((VC) -> ())? { get }
     var navigationController: UINavigationController? { get }
-    weak var wrapperNavigationController: UINavigationController? { get }
+    weak var destinationNavigationController: UINavigationController? { get }
 }
 
 extension DefaultCoordinator {
@@ -81,8 +81,8 @@ extension ModalCoordinator where VC: UIViewController, VC: Coordinated {
         configuration?(viewController)
         viewController.setCoordinator(self)
 
-        if let wrapperNavigationController = wrapperNavigationController {
-            navigationController.present(wrapperNavigationController, animated: animated, completion: nil)
+        if let destinationNavigationController = destinationNavigationController {
+            navigationController.present(destinationNavigationController, animated: animated, completion: nil)
         }
     }
 }
@@ -96,9 +96,9 @@ extension PushModalCoordinator where VC: UIViewController, VC: Coordinated {
         configuration?(viewController)
         viewController.setCoordinator(self)
 
-        if let wrapperNavigationController = wrapperNavigationController {
+        if let destinationNavigationController = destinationNavigationController {
             // wrapper navigation controller means VC should be presented modally
-            navigationController?.present(wrapperNavigationController, animated: animated, completion: nil)
+            navigationController?.present(destinationNavigationController, animated: animated, completion: nil)
         } else {
             // present controller normally (initializer for this case not implemented, just an exploration of a possible future case)
             navigationController?.pushViewController(viewController, animated: animated)

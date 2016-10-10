@@ -33,7 +33,7 @@ class SeasonDetailCoordinator: PushCoordinator {
 
     func navigate(from source: UIViewController, to destination: UIViewController, with identifier: String?, and sender: AnyObject?) {
         if let navigation = source.navigationController, let destination = destination as? UINavigationController, let viewController = destination.topViewController as? EpisodeCreateViewController, let viewModel = sender as? SeasonDetailViewModel, identifier == "createSegue" {
-            let coordinator = EpisodeCreateCoordinator(navigationController: navigation, wrapperNavigationController: destination, viewController: viewController, viewModel: viewModel)
+            let coordinator = EpisodeCreateCoordinator(navigationController: navigation, destinationNavigationController: destination, viewController: viewController, viewModel: viewModel)
             coordinator.delegate = self
             coordinator.start()
         }        

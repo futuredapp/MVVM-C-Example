@@ -25,14 +25,14 @@ class EpisodeCreateCoordinator: PushModalCoordinator {
     // uncomment to present controller without animation
     // var animated: Bool = false
 
-    weak var wrapperNavigationController: UINavigationController?
+    weak var destinationNavigationController: UINavigationController?
     weak var viewController: EpisodeCreateViewController?
 
     weak var delegate: EpisodeCreateCoordinatorDelegate?
 
-    init(navigationController: UINavigationController, wrapperNavigationController: UINavigationController, viewController: EpisodeCreateViewController, viewModel: SeasonDetailViewModel) {
+    init(navigationController: UINavigationController, destinationNavigationController: UINavigationController, viewController: EpisodeCreateViewController, viewModel: SeasonDetailViewModel) {
         self.navigationController = navigationController
-        self.wrapperNavigationController = wrapperNavigationController
+        self.destinationNavigationController = destinationNavigationController
         self.viewController = viewController
         self.viewModel = viewModel
     }
