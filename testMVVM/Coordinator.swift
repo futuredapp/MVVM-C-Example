@@ -79,6 +79,12 @@ extension PushCoordinator where VC: UIViewController, VC: Coordinated {
         viewController.setCoordinator(self)
         navigationController.pushViewController(viewController, animated: animated)
     }
+
+    func stop() {
+        delegate?.willStop(in: self)
+        navigationController.popViewController(animated: animated)
+        delegate?.didStop(in: self)
+    }
 }
 
 extension ModalCoordinator where VC: UIViewController, VC: Coordinated {
@@ -91,8 +97,19 @@ extension ModalCoordinator where VC: UIViewController, VC: Coordinated {
         viewController.setCoordinator(self)
 
         if let destinationNavigationController = destinationNavigationController {
+            // wrapper navigation controller given, present it
             navigationController.present(destinationNavigationController, animated: animated, completion: nil)
+        } else {
+            // no wrapper navigation controller given, present actual controller
+            navigationController.present(viewController, animated: animated, completion: nil)
         }
+    }
+
+    func stop() {
+        delegate?.willStop(in: self)
+        viewController?.dismiss(animated: true, completion: {
+            self.delegate?.didStop(in: self)
+        })
     }
 }
 
@@ -105,12 +122,27 @@ extension PushModalCoordinator where VC: UIViewController, VC: Coordinated {
         configuration?(viewController)
         viewController.setCoordinator(self)
 
+        // TODO: figure out better way to distinguish between Push and Modal behavior
         if let destinationNavigationController = destinationNavigationController {
             // wrapper navigation controller means VC should be presented modally
             navigationController?.present(destinationNavigationController, animated: animated, completion: nil)
         } else {
             // present controller normally (initializer for this case not implemented, just an exploration of a possible future case)
             navigationController?.pushViewController(viewController, animated: animated)
+        }
+    }
+
+    func stop() {
+        delegate?.willStop(in: self)
+
+        // TODO: figure out better way to distinguish between Push and Modal behavior
+        if let _ = destinationNavigationController {
+            viewController?.dismiss(animated: true, completion: {
+                self.delegate?.didStop(in: self)
+            })
+        } else {
+            let _ = navigationController?.popViewController(animated: animated)
+            delegate?.didStop(in: self)
         }
     }
 }
