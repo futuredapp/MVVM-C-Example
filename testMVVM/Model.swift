@@ -31,6 +31,5 @@ class Episode {
 
     init(withId id: String) {
         self.id = id
-    }
-    
+    }    
 }

@@ -9,9 +9,18 @@
 import Foundation
 import UIKit
 
-class EpisodeCreateViewController: UIViewController {
+class EpisodeCreateViewController: UIViewController, Coordinated {
 
     var viewModel: EpisodeCreateViewModel!
+    var coordinator: EpisodeCreateCoordinator?
+
+    func getCoordinator() -> Coordinator? {
+        return coordinator
+    }
+
+    func setCoordinator(_ coordinator: Coordinator) {
+        self.coordinator = coordinator as? EpisodeCreateCoordinator
+    }
 
     @IBOutlet weak var nameTextField:  UITextField!
 
@@ -20,15 +29,14 @@ class EpisodeCreateViewController: UIViewController {
     }
 
     @IBAction func save() {
-
         _ = viewModel.save().then { _ -> Void in
-            self.dismiss(animated: true, completion: nil)
-            }.catch { err in
+            self.coordinator?.stop()
+        }.catch { err in
             print(err)
         }
     }
 
     @IBAction func cancel() {
-        self.dismiss(animated: true, completion: nil)
+        coordinator?.stop()
     }
 }

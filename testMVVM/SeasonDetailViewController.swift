@@ -21,6 +21,10 @@ class SeasonDetailViewController: BaseController, Coordinated {
         return coordinator
     }
 
+    func setCoordinator(_ coordinator: Coordinator) {
+        self.coordinator = coordinator as? SeasonDetailCoordinator
+    }
+
     @IBAction func handleCreateEpisodeButtonTap() {
         coordinator?.showCreateEpisode(from: viewModel)
     }

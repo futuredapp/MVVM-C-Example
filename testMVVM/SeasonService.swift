@@ -9,13 +9,11 @@
 import Foundation
 import PromiseKit
 
-
 protocol SeasonsServices {    
     func seasons() -> Promise<[Season]>
     func create(episode:Episode, inSeason season: Season) -> Promise<Episode>
     func update(episode: Episode, name: String?) -> Promise<Episode>
 }
-
 
 class TestSeasonsServices: SeasonsServices {
     
@@ -23,7 +21,6 @@ class TestSeasonsServices: SeasonsServices {
         return Promise { fulfill, reject in
             fulfill([Season(name: "season 1", episodes: [Episode(name:"aa"), Episode(name:"ab")])])
         }
-
     }
 
     func create(episode:Episode, inSeason season: Season) -> Promise<Episode> {
@@ -39,5 +36,4 @@ class TestSeasonsServices: SeasonsServices {
             fulfill(episode)
         }
     }
-
 }

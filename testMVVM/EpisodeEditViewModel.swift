@@ -38,7 +38,6 @@ class EpisodeEditViewModel {
     }
 
     func save() -> Promise<Void> {
-
         return firstly { _ -> Promise<Episode> in
             if !isSomethingToUpdate.value {
                 throw EpisodeEditViewModelError.NothingToUpdate
@@ -49,8 +48,5 @@ class EpisodeEditViewModel {
             }.then { episode -> Void in
 
         }
-
     }
-
-
 }

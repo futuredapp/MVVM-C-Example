@@ -21,11 +21,14 @@ class SeasonsViewController: BaseController, Coordinated {
         _ = viewModel.load().then { (_) -> Void in
             self.tableView.reloadData()
         }
-
     }
 
     func getCoordinator() -> Coordinator? {
         return coordinator
+    }
+
+    func setCoordinator(_ coordinator: Coordinator) {
+        self.coordinator = coordinator as? SeasonsTableCoordinator
     }
 }
 
