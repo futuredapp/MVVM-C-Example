@@ -14,7 +14,7 @@ class SeasonsViewController: BaseController, Coordinated {
     @IBOutlet weak var tableView: UITableView!
 
     var viewModel: SeasonsTableViewModel!
-    var coordinator: SeasonsTableCoordinator?
+    var coordinator: SeasonsCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class SeasonsViewController: BaseController, Coordinated {
     }
 
     func setCoordinator(_ coordinator: Coordinator) {
-        self.coordinator = coordinator as? SeasonsTableCoordinator
+        self.coordinator = coordinator as? SeasonsCoordinator
     }
 }
 

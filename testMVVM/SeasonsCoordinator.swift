@@ -8,22 +8,17 @@
 
 import UIKit
 
-class SeasonsTableCoordinator: Coordinator {
-
-    let window: UIWindow
+class SeasonsCoordinator: DefaultCoordinator {
     
     weak var viewController: SeasonsViewController?
 
-    init(window: UIWindow) {
-        self.window = window
+    init(viewController: SeasonsViewController) {
+        self.viewController = viewController
     }
 
     func start() {
-        let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! UINavigationController
-        viewController = navigationController.topViewController as? SeasonsViewController
         viewController?.viewModel = SeasonsTableViewModel(seasonsServices: TestSeasonsServices())
         viewController?.coordinator = self
-        window.rootViewController = navigationController
     }
 
     func navigate(from source: UIViewController, to destination: UIViewController, with identifier: String?, and sender: AnyObject?) {

@@ -22,15 +22,15 @@ class AppCoordinator: Coordinator {
         let loggedIn = true
 
         if (loggedIn) {
-            showSeasons()
+            showTabBar()
         } else {
             showAuth()
         }
     }
 
-    func showSeasons() {
-        let seasonsCoordinator = SeasonsTableCoordinator(window: window)
-        seasonsCoordinator.start()
+    func showTabBar() {
+        let tabBarCoordinator = TabBarCoordinator(window: window)
+        tabBarCoordinator.start()
     }
 
     func showAuth() {
