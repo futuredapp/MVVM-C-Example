@@ -12,7 +12,12 @@ import UIKit
 class AppCoordinator: Coordinator {
 
     let window: UIWindow
-
+    let serviceHelper: ServiceHelper = {
+        let helper = ServiceHelper()
+        helper.add(SeasonsServices.self, for: TestSeasonsServices.self)
+        return helper
+    }()
+    
     init(window: UIWindow) {
         self.window = window
     }
@@ -29,7 +34,7 @@ class AppCoordinator: Coordinator {
     }
 
     func showTabBar() {
-        let tabBarCoordinator = TabBarCoordinator(window: window)
+        let tabBarCoordinator = TabBarCoordinator(window: window, services: serviceHelper)
         tabBarCoordinator.start()
     }
 

@@ -9,15 +9,18 @@
 import UIKit
 
 class SeasonsCoordinator: DefaultCoordinator {
-    
+
+    let serviceHelper: ServiceHelper
+
     weak var viewController: SeasonsViewController?
 
-    init(viewController: SeasonsViewController) {
+    init(viewController: SeasonsViewController, services: ServiceHelper) {
         self.viewController = viewController
+        self.serviceHelper = services
     }
 
     func start() {
-        viewController?.viewModel = SeasonsTableViewModel(seasonsServices: TestSeasonsServices())
+        viewController?.viewModel = SeasonsTableViewModel(seasonsServices: serviceHelper.get())
         viewController?.coordinator = self
     }
 
