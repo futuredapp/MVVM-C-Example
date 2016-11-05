@@ -27,15 +27,16 @@ class ServiceHelper {
     }
 
     func add<T>(_ protocolType: T.Type, for concreteType: Service.Type, with name: String? = nil) {
-        let name = name ?? String(reflecting: protocolType)
-        servicesDictionary[name] = concreteType.init()
+        self.add(protocolType, for: concreteType.init(), with: name)
     }
 
-    func add(_ type: Service.Type, with name: String? = nil, constructor: () -> Service) {
-        // check type
+    func add<T>(_ type: T.Type, with name: String? = nil, constructor: () -> Service) {
+        self.add(type, for: constructor(), with: name)
+    }
 
-        let name = name ?? String(reflecting: type)
-        servicesDictionary[name] = constructor()
+    private func add<T>(_ protocolType: T.Type, for instance: Service, with name: String? = nil) {
+        let name = name ?? String(reflecting: protocolType)
+        servicesDictionary[name] = instance
     }
 
     func get<T>(by type: T.Type = T.self) -> T {
