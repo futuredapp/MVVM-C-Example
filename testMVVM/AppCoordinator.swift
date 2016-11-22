@@ -12,8 +12,8 @@ import UIKit
 class AppCoordinator: Coordinator {
 
     let window: UIWindow
-    let serviceHelper: ServiceHelper = {
-        let helper = ServiceHelper()
+    let serviceHelper: ServiceHolder = {
+        let helper = ServiceHolder()
         helper.add(SeasonsServices.self, for: TestSeasonsServices.self)
         return helper
     }()

@@ -12,7 +12,7 @@ protocol Service {
     init()
 }
 
-class ServiceHelper {
+class ServiceHolder {
     private var servicesDictionary: [String: Service] = [:]
 
     init(services: [Service.Type]? = nil) {

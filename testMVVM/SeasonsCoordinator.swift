@@ -10,11 +10,11 @@ import UIKit
 
 class SeasonsCoordinator: DefaultCoordinator {
 
-    let serviceHelper: ServiceHelper
+    let serviceHelper: ServiceHolder
 
     weak var viewController: SeasonsViewController?
 
-    init(viewController: SeasonsViewController, services: ServiceHelper) {
+    init(viewController: SeasonsViewController, services: ServiceHolder) {
         self.viewController = viewController
         self.serviceHelper = services
     }

@@ -11,11 +11,11 @@ import UIKit
 class TabBarCoordinator: DefaultCoordinator {
 
     let window: UIWindow
-    let serviceHelper: ServiceHelper
+    let serviceHelper: ServiceHolder
 
     weak var viewController: UITabBarController?
 
-    init(window: UIWindow, services: ServiceHelper) {
+    init(window: UIWindow, services: ServiceHolder) {
         self.window = window
         self.viewController = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController)
         self.serviceHelper = services
