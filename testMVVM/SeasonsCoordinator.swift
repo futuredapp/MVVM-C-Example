@@ -8,22 +8,20 @@
 
 import UIKit
 
-class SeasonsTableCoordinator: Coordinator {
+class SeasonsCoordinator: DefaultCoordinator {
 
-    let window: UIWindow
-    
+    let serviceHelper: ServiceHolder
+
     weak var viewController: SeasonsViewController?
 
-    init(window: UIWindow) {
-        self.window = window
+    init(viewController: SeasonsViewController, services: ServiceHolder) {
+        self.viewController = viewController
+        self.serviceHelper = services
     }
 
     func start() {
-        let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! UINavigationController
-        viewController = navigationController.topViewController as? SeasonsViewController
-        viewController?.viewModel = SeasonsTableViewModel(seasonsServices: TestSeasonsServices())
+        viewController?.viewModel = SeasonsTableViewModel(seasonsServices: serviceHelper.get())
         viewController?.coordinator = self
-        window.rootViewController = navigationController
     }
 
     func navigate(from source: UIViewController, to destination: UIViewController, with identifier: String?, and sender: AnyObject?) {

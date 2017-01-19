@@ -160,7 +160,6 @@ protocol Coordinated {
 }
 
 class CoordinatorSegue: UIStoryboardSegue {
-
     open var sender: AnyObject!
 
     override func perform() {

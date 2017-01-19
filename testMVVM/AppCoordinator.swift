@@ -12,7 +12,12 @@ import UIKit
 class AppCoordinator: Coordinator {
 
     let window: UIWindow
-
+    let serviceHelper: ServiceHolder = {
+        let helper = ServiceHolder()
+        helper.add(SeasonsServices.self, for: TestSeasonsServices.self)
+        return helper
+    }()
+    
     init(window: UIWindow) {
         self.window = window
     }
@@ -22,15 +27,15 @@ class AppCoordinator: Coordinator {
         let loggedIn = true
 
         if (loggedIn) {
-            showSeasons()
+            showTabBar()
         } else {
             showAuth()
         }
     }
 
-    func showSeasons() {
-        let seasonsCoordinator = SeasonsTableCoordinator(window: window)
-        seasonsCoordinator.start()
+    func showTabBar() {
+        let tabBarCoordinator = TabBarCoordinator(window: window, services: serviceHelper)
+        tabBarCoordinator.start()
     }
 
     func showAuth() {
