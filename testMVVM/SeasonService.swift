@@ -15,7 +15,7 @@ protocol SeasonsServices: Service {
     func update(episode: Episode, name: String?) -> Promise<Episode>
 }
 
-class TestSeasonsServices: Service, SeasonsServices {
+class TestSeasonsServices: InitializableService, SeasonsServices {
 
     required init() {        
     }

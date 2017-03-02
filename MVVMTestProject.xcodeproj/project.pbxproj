@@ -31,6 +31,7 @@
 		94AE309E1D86CED90020A99C /* SeasonsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94924C201D82C80400CA286E /* SeasonsTableViewModel.swift */; };
 		94AE309F1D86CED90020A99C /* SeasonDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AE30951D86CDF00020A99C /* SeasonDetailViewModel.swift */; };
 		94AE30A01D86CED90020A99C /* EpisodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94924C261D82D6BE00CA286E /* EpisodeDetailViewModel.swift */; };
+		D0863F6E1E67F26200DD044C /* ServiceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D651221DCE56720063853A /* ServiceHolder.swift */; };
 		D0B926221DA6D9740055EAD9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B926211DA6D9740055EAD9 /* TabBarViewController.swift */; };
 		D0B926241DA6DD650055EAD9 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B926231DA6DD650055EAD9 /* TabBarCoordinator.swift */; };
 		D0D651231DCE56720063853A /* ServiceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D651221DCE56720063853A /* ServiceHolder.swift */; };
@@ -468,6 +469,7 @@
 				94AE30931D86B64A0020A99C /* SeasonService.swift in Sources */,
 				949B8DF11D8F03F90024D38E /* EpisodeCreateViewModel.swift in Sources */,
 				94AE309E1D86CED90020A99C /* SeasonsTableViewModel.swift in Sources */,
+				D0863F6E1E67F26200DD044C /* ServiceHolder.swift in Sources */,
 				94AE308A1D86B5DC0020A99C /* MVVMTestProjectTests.swift in Sources */,
 				94AE30A01D86CED90020A99C /* EpisodeDetailViewModel.swift in Sources */,
 			);

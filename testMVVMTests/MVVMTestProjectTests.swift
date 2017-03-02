@@ -12,7 +12,11 @@ import PromiseKit
 let mockupSeasons = [Season(name: "blah", episodes: [Episode(name: "episode1"), Episode(name: "episode2"), Episode(name: "episode3")])]
 
 class Test1SeasonServices: SeasonsServices {
-
+    internal func update(episode: Episode, name: String?) -> Promise<Episode> {
+        return Promise { fulfill, reject in
+            fulfill(episode)
+        }
+    }
 
     func create(episode: Episode, inSeason season: Season) -> Promise<Episode> {
         return Promise { fulfill, reject in
