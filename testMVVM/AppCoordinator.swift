@@ -39,6 +39,6 @@ class AppCoordinator: Coordinator {
     }
 
     func showAuth() {
-        // Authentication coordinator initialization
+        // TODO: Authentication coordinator initialization
     }
 }

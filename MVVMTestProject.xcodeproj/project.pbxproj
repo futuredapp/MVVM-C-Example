@@ -32,6 +32,9 @@
 		94AE309F1D86CED90020A99C /* SeasonDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AE30951D86CDF00020A99C /* SeasonDetailViewModel.swift */; };
 		94AE30A01D86CED90020A99C /* EpisodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94924C261D82D6BE00CA286E /* EpisodeDetailViewModel.swift */; };
 		D0863F6E1E67F26200DD044C /* ServiceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D651221DCE56720063853A /* ServiceHolder.swift */; };
+		D0863F701E67FDB500DD044C /* AnotherControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0863F6F1E67FDB500DD044C /* AnotherControllerCoordinator.swift */; };
+		D0863F721E67FDF400DD044C /* AnotherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0863F711E67FDF400DD044C /* AnotherViewController.swift */; };
+		D0863F741E67FE2F00DD044C /* AnotherViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0863F731E67FE2F00DD044C /* AnotherViewController.storyboard */; };
 		D0B926221DA6D9740055EAD9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B926211DA6D9740055EAD9 /* TabBarViewController.swift */; };
 		D0B926241DA6DD650055EAD9 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B926231DA6DD650055EAD9 /* TabBarCoordinator.swift */; };
 		D0D651231DCE56720063853A /* ServiceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D651221DCE56720063853A /* ServiceHolder.swift */; };
@@ -80,6 +83,9 @@
 		94AE309A1D86CECA0020A99C /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A04F71B848679EA3ABB8CCCA /* Pods-MVVMTestProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMTestProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMTestProject/Pods-MVVMTestProject.release.xcconfig"; sourceTree = "<group>"; };
 		B35CED9192716535E7A9BB15 /* Pods-MVVMTestProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMTestProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMTestProjectTests/Pods-MVVMTestProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D0863F6F1E67FDB500DD044C /* AnotherControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnotherControllerCoordinator.swift; sourceTree = "<group>"; };
+		D0863F711E67FDF400DD044C /* AnotherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnotherViewController.swift; sourceTree = "<group>"; };
+		D0863F731E67FE2F00DD044C /* AnotherViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnotherViewController.storyboard; sourceTree = "<group>"; };
 		D0B926211DA6D9740055EAD9 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D0B926231DA6DD650055EAD9 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		D0D651221DCE56720063853A /* ServiceHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceHolder.swift; sourceTree = "<group>"; };
@@ -161,6 +167,7 @@
 				94AE30941D86CD360020A99C /* ViewModel */,
 				94AE30991D86CEB40020A99C /* Model */,
 				94924C121D82C79D00CA286E /* Main.storyboard */,
+				D0863F731E67FE2F00DD044C /* AnotherViewController.storyboard */,
 				94924C151D82C79D00CA286E /* Assets.xcassets */,
 				94924C171D82C79D00CA286E /* LaunchScreen.storyboard */,
 				94924C1A1D82C79D00CA286E /* Info.plist */,
@@ -199,6 +206,7 @@
 				9487B6C91D8AC4450016432F /* SeasonTableViewCell.swift */,
 				94924C241D82D60700CA286E /* SeasonDetailViewController.swift */,
 				949B8DED1D8EFC9C0024D38E /* EpisodeCreateViewController.swift */,
+				D0863F711E67FDF400DD044C /* AnotherViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -229,6 +237,7 @@
 				D0E8AA1F1D9832B5007EC517 /* SeasonsCoordinator.swift */,
 				D0E8AA1E1D9832B5007EC517 /* SeasonDetailCoordinator.swift */,
 				D0E8AA271D984048007EC517 /* EpisodeCreateCoordinator.swift */,
+				D0863F6F1E67FDB500DD044C /* AnotherControllerCoordinator.swift */,
 			);
 			name = Coordinator;
 			sourceTree = "<group>";
@@ -325,6 +334,7 @@
 			files = (
 				94924C191D82C79D00CA286E /* LaunchScreen.storyboard in Resources */,
 				94924C161D82C79D00CA286E /* Assets.xcassets in Resources */,
+				D0863F741E67FE2F00DD044C /* AnotherViewController.storyboard in Resources */,
 				94924C141D82C79D00CA286E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +454,7 @@
 				94AE30961D86CDF00020A99C /* SeasonDetailViewModel.swift in Sources */,
 				949B8DEE1D8EFC9C0024D38E /* EpisodeCreateViewController.swift in Sources */,
 				94924C211D82C80400CA286E /* SeasonsTableViewModel.swift in Sources */,
+				D0863F721E67FDF400DD044C /* AnotherViewController.swift in Sources */,
 				D0D651231DCE56720063853A /* ServiceHolder.swift in Sources */,
 				9487B6CA1D8AC4450016432F /* SeasonTableViewCell.swift in Sources */,
 				94924C251D82D60700CA286E /* SeasonDetailViewController.swift in Sources */,
@@ -456,6 +467,7 @@
 				94AE309B1D86CECA0020A99C /* Model.swift in Sources */,
 				D0E8AA241D983395007EC517 /* BaseController.swift in Sources */,
 				D0B926241DA6DD650055EAD9 /* TabBarCoordinator.swift in Sources */,
+				D0863F701E67FDB500DD044C /* AnotherControllerCoordinator.swift in Sources */,
 				D0E8AA221D9832B5007EC517 /* SeasonsCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
