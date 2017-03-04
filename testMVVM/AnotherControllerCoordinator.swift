@@ -10,12 +10,12 @@ import UIKit
 
 class AnotherCoordinator: DefaultCoordinator {
 
-    let serviceHelper: ServiceHolder
+    let serviceHolder: ServiceHolder
 
     weak var viewController: AnotherViewController?
 
     init(services: ServiceHolder) {
-        self.serviceHelper = services
+        self.serviceHolder = services
         self.viewController = UIStoryboard(name: "AnotherViewController", bundle: nil).instantiateInitialViewController() as? AnotherViewController
     }
 

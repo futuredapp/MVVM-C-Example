@@ -11,19 +11,19 @@ import UIKit
 class TabBarCoordinator: Coordinator {
 
     let window: UIWindow
-    let serviceHelper: ServiceHolder
+    let serviceHolder: ServiceHolder
 
     init(window: UIWindow, services: ServiceHolder) {
         self.window = window
-        self.serviceHelper = services
+        self.serviceHolder = services
     }
 
     func start() {
         let tabBarController = UITabBarController()
 
-        let seasonsCoordinator = SeasonsCoordinator(services: serviceHelper)
+        let seasonsCoordinator = SeasonsCoordinator(services: serviceHolder)
         seasonsCoordinator.start()
-        let anotherCoordiantor = AnotherCoordinator(services: serviceHelper)
+        let anotherCoordiantor = AnotherCoordinator(services: serviceHolder)
         anotherCoordiantor.start()
 
         tabBarController.setViewControllers([seasonsCoordinator.navigationController!, anotherCoordiantor.viewController!], animated: false)

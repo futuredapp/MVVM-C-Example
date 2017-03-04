@@ -1,5 +1,5 @@
 //
-//  ServiceHelper.swift
+//  ServiceHolder.swift
 //  FuntastyKit
 //
 //  Created by Martin Pinka on 02.11.16.

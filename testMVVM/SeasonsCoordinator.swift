@@ -10,19 +10,19 @@ import UIKit
 
 class SeasonsCoordinator: DefaultCoordinator {
 
-    let serviceHelper: ServiceHolder
+    let serviceHolder: ServiceHolder
 
     weak var viewController: SeasonsViewController?
     weak var navigationController: UINavigationController?
 
     init(services: ServiceHolder) {
-        self.serviceHelper = services
+        self.serviceHolder = services
         self.navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? UINavigationController
         self.viewController = navigationController!.topViewController as? SeasonsViewController
     }
 
     func start() {
-        viewController?.viewModel = SeasonsTableViewModel(seasonsServices: serviceHelper.get())
+        viewController?.viewModel = SeasonsTableViewModel(seasonsServices: serviceHolder.get())
         viewController?.coordinator = self
     }
 
