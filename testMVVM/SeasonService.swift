@@ -9,14 +9,17 @@
 import Foundation
 import PromiseKit
 
-protocol SeasonsServices {    
+protocol SeasonsServices: Service {
     func seasons() -> Promise<[Season]>
     func create(episode:Episode, inSeason season: Season) -> Promise<Episode>
     func update(episode: Episode, name: String?) -> Promise<Episode>
 }
 
-class TestSeasonsServices: SeasonsServices {
-    
+class TestSeasonsServices: InitializableService, SeasonsServices {
+
+    required init() {        
+    }
+
     func seasons() -> Promise<[Season]> {
         return Promise { fulfill, reject in
             fulfill([Season(name: "season 1", episodes: [Episode(name:"aa"), Episode(name:"ab")])])
