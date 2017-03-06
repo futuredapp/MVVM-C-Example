@@ -35,7 +35,6 @@
 		D0863F701E67FDB500DD044C /* AnotherControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0863F6F1E67FDB500DD044C /* AnotherControllerCoordinator.swift */; };
 		D0863F721E67FDF400DD044C /* AnotherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0863F711E67FDF400DD044C /* AnotherViewController.swift */; };
 		D0863F741E67FE2F00DD044C /* AnotherViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0863F731E67FE2F00DD044C /* AnotherViewController.storyboard */; };
-		D0B926221DA6D9740055EAD9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B926211DA6D9740055EAD9 /* TabBarViewController.swift */; };
 		D0B926241DA6DD650055EAD9 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B926231DA6DD650055EAD9 /* TabBarCoordinator.swift */; };
 		D0D651231DCE56720063853A /* ServiceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D651221DCE56720063853A /* ServiceHolder.swift */; };
 		D0E8AA201D9832B5007EC517 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E8AA1D1D9832B5007EC517 /* Coordinator.swift */; };
@@ -86,7 +85,6 @@
 		D0863F6F1E67FDB500DD044C /* AnotherControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnotherControllerCoordinator.swift; sourceTree = "<group>"; };
 		D0863F711E67FDF400DD044C /* AnotherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnotherViewController.swift; sourceTree = "<group>"; };
 		D0863F731E67FE2F00DD044C /* AnotherViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AnotherViewController.storyboard; sourceTree = "<group>"; };
-		D0B926211DA6D9740055EAD9 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D0B926231DA6DD650055EAD9 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		D0D651221DCE56720063853A /* ServiceHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceHolder.swift; sourceTree = "<group>"; };
 		D0E8AA1D1D9832B5007EC517 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				D0E8AA231D983395007EC517 /* BaseController.swift */,
-				D0B926211DA6D9740055EAD9 /* TabBarViewController.swift */,
 				94924C101D82C79D00CA286E /* SeasonsViewController.swift */,
 				9487B6C91D8AC4450016432F /* SeasonTableViewCell.swift */,
 				94924C241D82D60700CA286E /* SeasonDetailViewController.swift */,
@@ -461,7 +458,6 @@
 				94924C111D82C79D00CA286E /* SeasonsViewController.swift in Sources */,
 				94924C0F1D82C79D00CA286E /* AppDelegate.swift in Sources */,
 				D0E8AA211D9832B5007EC517 /* SeasonDetailCoordinator.swift in Sources */,
-				D0B926221DA6D9740055EAD9 /* TabBarViewController.swift in Sources */,
 				94924C271D82D6BE00CA286E /* EpisodeDetailViewModel.swift in Sources */,
 				949B8DF01D8EFCFD0024D38E /* EpisodeCreateViewModel.swift in Sources */,
 				94AE309B1D86CECA0020A99C /* Model.swift in Sources */,
